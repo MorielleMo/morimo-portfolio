@@ -6,6 +6,7 @@ import Works from './components/Works.vue'
 import Skills from './components/Skills.vue'
 import Contact from './components/Contact.vue'
 import Navbar from './components/Navbar.vue'
+import Footer from './components/Footer.vue'
 </script>
 
 <template>
@@ -16,4 +17,5 @@ import Navbar from './components/Navbar.vue'
   <Works />
   <Skills />
   <Contact />
+  <Footer />
 </template>
