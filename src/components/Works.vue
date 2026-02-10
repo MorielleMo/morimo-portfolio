@@ -10,12 +10,13 @@
 
     <div class="carousel-wrapper">
 
+      <!-- NAV DESKTOP -->
       <button class="nav left" @click="prev">❮</button>
 
       <div class="carousel">
         <div
           class="track"
-          :style="{ transform: `translateX(-${current * 320}px)` }"
+          :style="{ transform: `translateX(-${current * cardWidth}px)` }"
         >
           <div
             v-for="p in projects"
@@ -62,7 +63,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 /* ===== CAROUSEL ===== */
 
@@ -75,7 +76,6 @@ const projects = [
     desc: "Fictive website created during my studies using WordPress.",
     link: "https://morimo-ovh.com/cms2/"
   },
-  
   {
     title: "Examen Blanc",
     type: "HTML / CSS",
@@ -96,6 +96,10 @@ const projects = [
   }
 ]
 
+const cardWidth = computed(() => {
+  return window.innerWidth < 768 ? 260 : 320
+})
+
 function next() {
   if (current.value < projects.length - 1) current.value++
 }
@@ -104,7 +108,7 @@ function prev() {
   if (current.value > 0) current.value--
 }
 
-/* ===== GALLERY IMPORTS (NOMS EXACTS) ===== */
+/* ===== GALLERY ===== */
 
 import illu1 from '@/assets/gallery/image illustrator 1.png'
 import illu2 from '@/assets/gallery/image illustrator 2.png'
@@ -122,18 +126,18 @@ const gallery = [
   { src: illu1, type: 'Illustrator' },
   { src: illu2, type: 'Illustrator' },
   { src: illu3, type: 'Illustrator' },
-
   { src: ps1, type: 'Photoshop' },
   { src: ps2, type: 'Photoshop' },
   { src: ps3, type: 'Photoshop' },
-
   { src: canva1, type: 'Canva' },
   { src: canva2, type: 'Canva' },
-  { src: canva3, type: 'Canva' },
+  { src: canva3, type: 'Canva' }
 ]
 </script>
 
 <style scoped>
+/* ===== SECTION ===== */
+
 .works {
   min-height: 100vh;
   background: #E6D9F6;
@@ -144,14 +148,14 @@ const gallery = [
 /* ===== TITLES ===== */
 
 .title {
-  font-size: 2.5rem;
+  font-size: 2.4rem;
   color: #5b2d91;
   margin-bottom: 12px;
 }
 
 .subtitle {
   color: #6b4a8f;
-  margin-bottom: 70px;
+  margin-bottom: 60px;
 }
 
 /* ===== CAROUSEL ===== */
@@ -165,14 +169,16 @@ const gallery = [
 }
 
 .carousel {
-  overflow: hidden;
+  overflow-x: auto;
   width: 100%;
+  scroll-snap-type: x mandatory;
 }
 
 .track {
   display: flex;
-  gap: 30px;
-  transition: transform 0.6s cubic-bezier(.17,.67,.29,1.02);
+  gap: 24px;
+  scroll-snap-align: start;
+  transition: transform 0.5s ease;
 }
 
 .card {
@@ -185,8 +191,10 @@ const gallery = [
   flex-direction: column;
 }
 
+/* IMAGE */
+
 .image {
-  height: 160px;
+  height: 150px;
   background: linear-gradient(135deg, #cbb6ff, #9b7fdc);
   position: relative;
 }
@@ -203,20 +211,27 @@ const gallery = [
 }
 
 .info {
-  padding: 22px;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  padding: 20px;
+}
+
+.info h3 {
+  font-size: 1rem;
+  color: #5b2d91;
+}
+
+.info p {
+  font-size: 0.9rem;
+  color: #5a3d7a;
+  margin: 10px 0 18px;
 }
 
 .btn {
-  margin-top: auto;
-  align-self: flex-start;
-  padding: 10px 22px;
+  padding: 8px 20px;
   background: #5A331D;
   color: #F3EDE5;
   border-radius: 999px;
   text-decoration: none;
+  font-size: 0.8rem;
 }
 
 /* ===== NAV ===== */
@@ -232,53 +247,54 @@ const gallery = [
   cursor: pointer;
 }
 
-.nav.left { margin-right: 15px; }
-.nav.right { margin-left: 15px; }
+.nav.left { margin-right: 12px; }
+.nav.right { margin-left: 12px; }
 
 /* ===== GALLERY ===== */
 
 .gallery-title {
-  margin-top: 120px;
+  margin-top: 100px;
   font-size: 2rem;
   color: #5b2d91;
 }
 
 .gallery-sub {
   color: #6b4a8f;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .gallery-grid {
   max-width: 1100px;
   margin: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 24px;
-}
-
-.gallery-item {
-  position: relative;
-  border-radius: 18px;
-  overflow: hidden;
-  background: #fff;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 18px;
 }
 
 .gallery-item img {
   width: 100%;
-  height: 100%;
+  height: 180px;
   object-fit: cover;
-  display: block;
 }
 
-.badge {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  background: rgba(90,45,145,0.9);
-  color: white;
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-size: 0.7rem;
+/* ===== MOBILE ===== */
+
+@media (max-width: 768px) {
+
+  .works {
+    padding: 100px 20px;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .card {
+    min-width: 260px;
+  }
+
+  .gallery-item img {
+    height: 150px;
+  }
 }
 </style>

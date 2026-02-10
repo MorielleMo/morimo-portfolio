@@ -100,6 +100,8 @@ const isFlipped = ref(false)
 </script>
 
 <style scoped>
+/* ===== SECTION ===== */
+
 .about {
   min-height: 100vh;
   background: #f6f1fb;
@@ -109,7 +111,7 @@ const isFlipped = ref(false)
   align-items: center;
 }
 
-/* TITLE */
+/* ===== TITLE ===== */
 
 .title {
   display: flex;
@@ -133,7 +135,7 @@ const isFlipped = ref(false)
   box-shadow: 0 10px 25px rgba(120,70,180,0.4);
 }
 
-/* SCENE */
+/* ===== SCENE ===== */
 
 .card-scene {
   perspective: 1200px;
@@ -141,7 +143,7 @@ const isFlipped = ref(false)
   max-width: 900px;
 }
 
-/* CARD */
+/* ===== CARD ===== */
 
 .id-card {
   position: relative;
@@ -156,7 +158,7 @@ const isFlipped = ref(false)
   transform: rotateY(180deg);
 }
 
-/* FACES */
+/* ===== FACES ===== */
 
 .card-face {
   position: absolute;
@@ -170,7 +172,7 @@ const isFlipped = ref(false)
   gap: 40px;
 }
 
-/* FRONT */
+/* ===== FRONT ===== */
 
 .card-front {
   display: flex;
@@ -258,7 +260,7 @@ const isFlipped = ref(false)
   opacity: 0.6;
 }
 
-/* BACK */
+/* ===== BACK ===== */
 
 .card-back {
   transform: rotateY(180deg);
@@ -277,10 +279,19 @@ const isFlipped = ref(false)
   margin-bottom: 14px;
 }
 
-/* MOBILE */
+/* ===== MOBILE FIX ===== */
 
 @media (max-width: 800px) {
+
+  .id-card {
+    min-height: auto;
+  }
+
   .card-face {
+    position: relative;
+    max-height: 75vh;
+    overflow-y: auto;
+    padding-bottom: 30px;
     flex-direction: column;
     text-align: center;
   }
@@ -292,6 +303,10 @@ const isFlipped = ref(false)
 
   .tags {
     justify-content: center;
+  }
+
+  .card-back {
+    padding-bottom: 40px;
   }
 }
 </style>
