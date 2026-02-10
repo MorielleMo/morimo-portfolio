@@ -4,7 +4,7 @@
     <!-- TITLE -->
     <h2 class="title">
       About Me
-      <span class="emoji-bubble"></span>
+      <span class="emoji-bubble">👋</span>
     </h2>
 
     <!-- FLIP SCENE -->
@@ -15,25 +15,28 @@
         @click="isFlipped = !isFlipped"
       >
 
-        <!-- ===== FRONT ===== -->
+        <!-- ===== FRONT (RECTO) ===== -->
         <div class="card-face card-front">
 
+          <!-- PHOTO -->
           <div class="photo-frame">
             <div class="photo-bg">
               <img src="@/assets/profile.jpg" alt="MoriMo photo" />
             </div>
           </div>
 
+          <!-- INFO -->
           <div class="info">
             <h3 class="name">MoriMo</h3>
             <p class="role">UX/UI & Web Designer</p>
 
             <ul class="details">
-              <li><strong>Origin:</strong> Belgian — Congolese roots </li>
+              <li><strong>Origin:</strong> Belgian — Congolese roots 🇧🇪🇨🇩</li>
               <li><strong>Passion:</strong> Music & creative expression 🎶</li>
               <li><strong>Focus:</strong> User-centered digital experiences</li>
             </ul>
 
+            <!-- BIO (desktop priority, OK if cropped on mobile) -->
             <p class="bio">
               I love designing playful and meaningful interfaces that combine
               soft aesthetics with intuitive interactions. I’m inspired by
@@ -41,11 +44,16 @@
               that people truly enjoy using.
             </p>
 
-            <div class="tags">
-              <span>User-Centered</span>
-              <span>Creative</span>
-              <span>Detail-Oriented</span>
-              <span>Always Learning</span>
+            <!-- TAGS -->
+            <div class="tags-section">
+              <p class="tags-title">Values & Mindset</p>
+
+              <div class="tags">
+                <span>User-Centered</span>
+                <span>Creative</span>
+                <span>Detail-Oriented</span>
+                <span>Always Learning</span>
+              </div>
             </div>
 
             <p class="hint">Tap to flip →</p>
@@ -53,7 +61,7 @@
 
         </div>
 
-        <!-- ===== BACK ===== -->
+        <!-- ===== BACK (VERSO) ===== -->
         <div class="card-face card-back">
 
           <h3 class="back-title">What I love to create</h3>
@@ -130,6 +138,7 @@ const isFlipped = ref(false)
   align-items: center;
   justify-content: center;
   font-size: 1.3rem;
+  box-shadow: 0 10px 25px rgba(120,70,180,0.4);
 }
 
 /* ===== SCENE ===== */
@@ -169,7 +178,7 @@ const isFlipped = ref(false)
   gap: 40px;
 }
 
-/* FRONT */
+/* ===== FRONT ===== */
 
 .card-front {
   display: flex;
@@ -199,33 +208,100 @@ const isFlipped = ref(false)
   flex-direction: column;
 }
 
-.bio {
-  line-height: 1.7;
+.name {
+  font-size: 2rem;
+  color: #5b2d91;
 }
 
-/* BACK */
+.role {
+  color: #7b4ac7;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.details {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 16px;
+}
+
+.details li {
+  color: #4b2b6a;
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+}
+
+.bio {
+  color: #4b2b6a;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+/* TAGS */
+
+.tags-section {
+  margin-top: 20px;
+}
+
+.tags-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #7b4ac7;
+  margin-bottom: 12px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tags span {
+  background: #e7dcfb;
+  color: #5b2d91;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* ===== BACK ===== */
 
 .card-back {
   transform: rotateY(180deg);
   flex-direction: column;
 }
 
-/* ===== MOBILE FIX FINAL ===== */
+.back-title {
+  font-size: 1.6rem;
+  color: #5b2d91;
+  margin-bottom: 20px;
+}
+
+.back-text {
+  color: #4b2b6a;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+/* ===== MOBILE (STABLE & SAFE) ===== */
 
 @media (max-width: 800px) {
 
+  .card-scene {
+    height: 80vh;
+  }
+
   .id-card {
-    height: auto;
-    min-height: 75vh;
+    height: 100%;
   }
 
   .card-face {
-    position: relative;
+    padding: 30px 20px;
     flex-direction: column;
     text-align: center;
-    padding: 30px 20px 40px;
     overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
   }
 
   .photo-bg {
