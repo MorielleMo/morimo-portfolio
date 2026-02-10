@@ -1,48 +1,51 @@
 <template>
   <footer class="footer">
 
-    <div class="footer-content">
+    <!-- TOP -->
+    <div class="footer-top">
 
-      <!-- BRAND -->
-      <div class="brand">
-        <img :src="logo" alt="MoriMo logo" class="footer-logo" />
-        <p class="tagline">
-          UX/UI & Web Designer<br />
-          Creating meaningful digital experiences ✨
-        </p>
-      </div>
+      <!-- LOGO -->
+      <img
+        :src="logo"
+        alt="MoriMo logo"
+        class="footer-logo"
+      />
 
-      <!-- NAV -->
+      <!-- TAGLINE -->
+      <p class="tagline">
+        UX/UI & Web Designer · Creating meaningful digital experiences ✨
+      </p>
+
+      <!-- FOOTER NAV (INLINE) -->
       <nav class="footer-nav">
         <a href="#home">Home</a>
+        <span>•</span>
         <a href="#about">About</a>
+        <span>•</span>
         <a href="#brand">Brand</a>
+        <span>•</span>
         <a href="#works">Works</a>
+        <span>•</span>
         <a href="#skills">Skills</a>
+        <span>•</span>
         <a href="#contact">Contact</a>
       </nav>
 
-      <!-- CONTACT / SOCIAL -->
-      <div class="social">
-        <p class="connect">Let’s connect 💜</p>
+    </div>
 
-        <a
-          href="https://www.instagram.com/morimo.design/"
-          target="_blank"
-          rel="noopener"
-          class="social-link"
-        >
-          Instagram
-        </a>
+    <!-- SOCIAL -->
+    <div class="footer-social">
+      <a
+        href="https://www.instagram.com/morimo.design/"
+        target="_blank"
+        rel="noopener"
+      >
+        Instagram
+      </a>
 
-        <a
-          href="mailto:hello.morimo.design@gmail.com"
-          class="social-link"
-        >
-          hello.morimo.design@gmail.com
-        </a>
-      </div>
-
+      <a href="mailto:hello.morimo.design@gmail.com">
+        hello.morimo.design@gmail.com
+      </a>
     </div>
 
     <!-- BOTTOM -->
@@ -54,7 +57,7 @@
 </template>
 
 <script setup>
-import logo from '@/assets/logo.png'
+import logo from '@/assets/logo-black.png'
 const year = new Date().getFullYear()
 </script>
 
@@ -62,36 +65,34 @@ const year = new Date().getFullYear()
 .footer {
   background: #5b2d91;
   color: #F3EDE5;
-  padding: 70px 40px 30px;
+  padding: 80px 30px 30px;
+  text-align: center;
 }
 
-/* CONTENT */
+/* TOP */
 
-.footer-content {
-  max-width: 1100px;
+.footer-top {
+  max-width: 900px;
   margin: auto;
 
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1.2fr;
-  gap: 50px;
-  align-items: flex-start;
-}
-
-/* BRAND */
-
-.brand {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  align-items: center;
+  gap: 22px;
 }
 
+/* LOGO */
+
 .footer-logo {
-  width: 140px;
+  width: 160px;
 }
+
+/* TAGLINE */
 
 .tagline {
   font-size: 0.9rem;
   opacity: 0.85;
+  max-width: 600px;
   line-height: 1.6;
 }
 
@@ -99,15 +100,20 @@ const year = new Date().getFullYear()
 
 .footer-nav {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  font-size: 0.85rem;
 }
 
 .footer-nav a {
   color: #F3EDE5;
   text-decoration: none;
-  font-size: 0.9rem;
   transition: opacity 0.2s ease;
+}
+
+.footer-nav span {
+  opacity: 0.5;
 }
 
 .footer-nav a:hover {
@@ -116,29 +122,25 @@ const year = new Date().getFullYear()
 
 /* SOCIAL */
 
-.social {
+.footer-social {
+  margin-top: 35px;
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
 }
 
-.connect {
-  font-size: 0.9rem;
-  margin-bottom: 6px;
-}
-
-.social-link {
+.footer-social a {
   color: #F3EDE5;
   text-decoration: none;
   font-weight: 600;
   background: rgba(255,255,255,0.15);
-  padding: 8px 16px;
+  padding: 8px 18px;
   border-radius: 999px;
-  width: fit-content;
   transition: background 0.2s ease, transform 0.2s ease;
 }
 
-.social-link:hover {
+.footer-social a:hover {
   background: rgba(255,255,255,0.25);
   transform: translateY(-2px);
 }
@@ -146,31 +148,20 @@ const year = new Date().getFullYear()
 /* BOTTOM */
 
 .footer-bottom {
-  text-align: center;
-  margin-top: 50px;
+  margin-top: 45px;
   font-size: 0.75rem;
   opacity: 0.7;
 }
 
 /* MOBILE */
 
-@media (max-width: 900px) {
-  .footer-content {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 40px;
-  }
-
-  .brand {
-    align-items: center;
+@media (max-width: 600px) {
+  .footer-logo {
+    width: 130px;
   }
 
   .footer-nav {
-    align-items: center;
-  }
-
-  .social {
-    align-items: center;
+    gap: 6px;
   }
 }
 </style>

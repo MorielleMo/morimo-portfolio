@@ -75,12 +75,7 @@ const projects = [
     desc: "Fictive website created during my studies using WordPress.",
     link: "https://morimo-ovh.com/cms2/"
   },
-  {
-    title: "Demo Project",
-    type: "HTML / CSS",
-    desc: "First demo website made with pure HTML and CSS.",
-    link: "https://morimo-ovh.com/demo/"
-  },
+  
   {
     title: "Examen Blanc",
     type: "HTML / CSS",
