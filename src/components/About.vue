@@ -3,8 +3,8 @@
 
     <!-- TITLE -->
     <h2 class="title">
-      <span class="emoji-bubble">👋</span>
       About Me
+      <span class="emoji-bubble">👋</span>
     </h2>
 
     <!-- FLIP SCENE -->
@@ -15,15 +15,17 @@
         @click="isFlipped = !isFlipped"
       >
 
-        <!-- ===== FRONT ===== -->
+        <!-- ===== FRONT (RECTO) ===== -->
         <div class="card-face card-front">
 
+          <!-- PHOTO -->
           <div class="photo-frame">
             <div class="photo-bg">
               <img src="@/assets/profile.jpg" alt="MoriMo photo" />
             </div>
           </div>
 
+          <!-- INFO -->
           <div class="info">
             <h3 class="name">MoriMo</h3>
             <p class="role">UX/UI & Web Designer</p>
@@ -31,44 +33,56 @@
             <ul class="details">
               <li><strong>Origin:</strong> Belgian — Congolese roots 🇧🇪🇨🇩</li>
               <li><strong>Passion:</strong> Music & creative expression 🎶</li>
-              <li><strong>Focus:</strong> User-centered design</li>
+              <li><strong>Focus:</strong> User-centered digital experiences</li>
             </ul>
+
+            <p class="bio">
+              I love designing playful and meaningful interfaces that combine
+              soft aesthetics with intuitive interactions. I’m inspired by
+              storytelling, games and emotional design to create experiences
+              that people truly enjoy using.
+            </p>
+
+            <div class="tags">
+              <span>User-Centered</span>
+              <span>Creative</span>
+              <span>Detail-Oriented</span>
+              <span>Always Learning</span>
+            </div>
 
             <p class="hint">Tap to flip →</p>
           </div>
 
         </div>
 
-        <!-- ===== BACK ===== -->
+        <!-- ===== BACK (VERSO) ===== -->
         <div class="card-face card-back">
 
-          <h3 class="back-title">🎨 What I love to create</h3>
+          <h3 class="back-title">What I love to create</h3>
 
           <p class="back-text">
-            I enjoy designing visuals, logos and graphic identities.
-            I also work with photography and enhance images using
-            Photoshop to create strong visual impact.
+            I especially enjoy designing visuals, logos and graphic identities.
+            I also work with photography, editing and enhancing images using
+            Photoshop to increase visual impact and emotion.
           </p>
 
           <p class="back-text">
-            I love using Canva to explore ideas quickly and create
-            engaging visuals, and I design wireframes and mockups
-            on Figma with a strong focus on user experience.
+            I’m a big fan of Canva, a tool I use to quickly explore ideas, test
+            concepts and create effective visuals. I also design wireframes and
+            mockups in Figma, focusing on user experience, visual hierarchy and
+            overall consistency.
           </p>
 
           <p class="back-text">
-            I studied web design and I’m passionate about digital
-            communication, video editing and social media management
-            such as Instagram, Facebook and TikTok.
+            Having studied web design, I’m also interested in digital
+            communication, video editing, and social media management such as
+            Instagram, Facebook and TikTok.
           </p>
 
-          <div class="tools">
-            <span>Canva</span>
-            <span>Figma</span>
-            <span>Photoshop</span>
-            <span>UX/UI</span>
-            <span>Social Media</span>
-          </div>
+          <p class="back-text">
+            My goal is to create modern, coherent and human-centered projects
+            that tell a story and strengthen a brand’s identity.
+          </p>
 
           <p class="hint">← Tap to go back</p>
 
@@ -132,7 +146,7 @@ const isFlipped = ref(false)
 .id-card {
   position: relative;
   width: 100%;
-  min-height: 480px;
+  min-height: 520px;
   transform-style: preserve-3d;
   transition: transform 0.9s cubic-bezier(.17,.89,.32,1.49);
   cursor: pointer;
@@ -205,13 +219,37 @@ const isFlipped = ref(false)
 .details {
   list-style: none;
   padding: 0;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .details li {
   color: #4b2b6a;
   font-size: 0.95rem;
   margin-bottom: 6px;
+}
+
+.bio {
+  color: #4b2b6a;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+/* TAGS */
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tags span {
+  background: #e7dcfb;
+  color: #5b2d91;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 
 .hint {
@@ -239,24 +277,6 @@ const isFlipped = ref(false)
   margin-bottom: 14px;
 }
 
-/* TOOLS */
-
-.tools {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.tools span {
-  background: #e7dcfb;
-  color: #5b2d91;
-  padding: 8px 14px;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
 /* MOBILE */
 
 @media (max-width: 800px) {
@@ -270,7 +290,7 @@ const isFlipped = ref(false)
     height: 220px;
   }
 
-  .tools {
+  .tags {
     justify-content: center;
   }
 }
