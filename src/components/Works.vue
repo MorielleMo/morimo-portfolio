@@ -10,12 +10,13 @@
 
     <div class="carousel-wrapper">
 
+      <!-- NAV DESKTOP -->
       <button class="nav left" @click="prev">❮</button>
 
       <div class="carousel">
         <div
           class="track"
-          :style="{ transform: `translateX(-${current * 320}px)` }"
+          :style="trackStyle"
         >
           <div
             v-for="p in projects"
@@ -38,6 +39,7 @@
         </div>
       </div>
 
+      <!-- NAV DESKTOP -->
       <button class="nav right" @click="next">❯</button>
 
     </div>
@@ -62,7 +64,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 /* ===== CAROUSEL ===== */
 
@@ -103,7 +105,14 @@ function prev() {
   if (current.value > 0) current.value--
 }
 
-/* ===== GALLERY IMPORTS (NOMS EXACTS, INCHANGÉS) ===== */
+/* Desktop translate, mobile = scroll */
+const trackStyle = computed(() => {
+  return window.innerWidth > 768
+    ? { transform: `translateX(-${current.value * 330}px)` }
+    : {}
+})
+
+/* ===== GALLERY (INCHANGÉE) ===== */
 
 import illu1 from '@/assets/gallery/image illustrator 1.png'
 import illu2 from '@/assets/gallery/image illustrator 2.png'
@@ -131,6 +140,8 @@ const gallery = [
 </script>
 
 <style scoped>
+/* ===== SECTION ===== */
+
 .works {
   min-height: 100vh;
   background: #E6D9F6;
@@ -162,18 +173,19 @@ const gallery = [
 }
 
 .carousel {
-  overflow: hidden;
+  overflow-x: auto;
   width: 100%;
+  scroll-snap-type: x mandatory;
 }
 
 .track {
   display: flex;
   gap: 30px;
-  transition: transform 0.6s cubic-bezier(.17,.67,.29,1.02);
 }
 
 .card {
   min-width: 300px;
+  scroll-snap-align: center;
   background: #F3EDE5;
   border-radius: 26px;
   overflow: hidden;
@@ -181,6 +193,8 @@ const gallery = [
   display: flex;
   flex-direction: column;
 }
+
+/* IMAGE */
 
 .image {
   height: 160px;
@@ -203,12 +217,10 @@ const gallery = [
   padding: 22px;
   display: flex;
   flex-direction: column;
-  height: 100%;
 }
 
 .btn {
   margin-top: auto;
-  align-self: flex-start;
   padding: 10px 22px;
   background: #5A331D;
   color: #F3EDE5;
@@ -216,7 +228,7 @@ const gallery = [
   text-decoration: none;
 }
 
-/* ===== NAV ===== */
+/* ===== NAV DESKTOP ===== */
 
 .nav {
   background: #5b2d91;
@@ -231,6 +243,23 @@ const gallery = [
 
 .nav.left { margin-right: 15px; }
 .nav.right { margin-left: 15px; }
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 768px) {
+
+  .works {
+    padding: 100px 20px;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .card {
+    min-width: 260px;
+  }
+}
 
 /* ===== GALLERY (INCHANGÉE) ===== */
 
@@ -258,14 +287,12 @@ const gallery = [
   border-radius: 18px;
   overflow: hidden;
   background: #fff;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
 .gallery-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
 }
 
 .badge {
