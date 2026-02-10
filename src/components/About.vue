@@ -1,103 +1,180 @@
 <template>
   <section id="about" class="about">
 
-    <h2 class="title">About Me</h2>
+    <!-- TITLE -->
+    <h2 class="title">
+      <span class="emoji-bubble">👋</span>
+      About Me
+    </h2>
 
-    <div class="id-card">
+    <!-- FLIP SCENE -->
+    <div class="card-scene">
+      <div
+        class="id-card"
+        :class="{ flipped: isFlipped }"
+        @click="isFlipped = !isFlipped"
+      >
 
-      <!-- PHOTO -->
-      <div class="photo-frame">
-        <div class="photo-bg">
-          <!-- Mets ta photo dans src/assets/profile.jpg -->
-          <img src="@/assets/profile.jpg" alt="MoriMo photo" />
+        <!-- ===== FRONT ===== -->
+        <div class="card-face card-front">
+
+          <div class="photo-frame">
+            <div class="photo-bg">
+              <img src="@/assets/profile.jpg" alt="MoriMo photo" />
+            </div>
+          </div>
+
+          <div class="info">
+            <h3 class="name">MoriMo</h3>
+            <p class="role">UX/UI & Web Designer</p>
+
+            <ul class="details">
+              <li><strong>Origin:</strong> Belgian — Congolese roots 🇧🇪🇨🇩</li>
+              <li><strong>Passion:</strong> Music & creative expression 🎶</li>
+              <li><strong>Focus:</strong> User-centered design</li>
+            </ul>
+
+            <p class="hint">Tap to flip →</p>
+          </div>
+
         </div>
-      </div>
 
-      <!-- INFOS -->
-      <div class="info">
+        <!-- ===== BACK ===== -->
+        <div class="card-face card-back">
 
-        <h3 class="name">MoriMo</h3>
-        <p class="role">UX/UI & Web Designer</p>
+          <h3 class="back-title">🎨 What I love to create</h3>
 
-        <ul class="details">
-          <li><strong>Origin:</strong> Belgian — Congolese roots 🇧🇪🇨🇩</li>
-          <li><strong>Passion:</strong> Music & creative expression 🎶</li>
-          <li><strong>Focus:</strong> User-centered digital experiences</li>
-        </ul>
+          <p class="back-text">
+            I enjoy designing visuals, logos and graphic identities.
+            I also work with photography and enhance images using
+            Photoshop to create strong visual impact.
+          </p>
 
-        <p class="bio">
-          I love designing playful and meaningful interfaces that combine
-          soft aesthetics with intuitive interactions. I’m inspired by
-          storytelling, games and emotional design to create experiences that
-          people truly enjoy using.
-        </p>
+          <p class="back-text">
+            I love using Canva to explore ideas quickly and create
+            engaging visuals, and I design wireframes and mockups
+            on Figma with a strong focus on user experience.
+          </p>
 
-        <div class="tags">
-          <span>User-Centered</span>
-          <span>Creative</span>
-          <span>Detail-Oriented</span>
-          <span>Always Learning</span>
+          <p class="back-text">
+            I studied web design and I’m passionate about digital
+            communication, video editing and social media management
+            such as Instagram, Facebook and TikTok.
+          </p>
+
+          <div class="tools">
+            <span>Canva</span>
+            <span>Figma</span>
+            <span>Photoshop</span>
+            <span>UX/UI</span>
+            <span>Social Media</span>
+          </div>
+
+          <p class="hint">← Tap to go back</p>
+
         </div>
 
       </div>
-
     </div>
 
   </section>
 </template>
 
+<script setup>
+import { ref } from 'vue'
+const isFlipped = ref(false)
+</script>
+
 <style scoped>
 .about {
   min-height: 100vh;
   background: #f6f1fb;
-  padding: 120px 80px;
+  padding: 120px 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/* TITLE */
+
 .title {
-  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 2.3rem;
   color: #5b2d91;
-  margin-bottom: 70px;
+  margin-bottom: 60px;
 }
 
-/* ID CARD */
+.emoji-bubble {
+  background: #b892ff;
+  color: white;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  box-shadow: 0 10px 25px rgba(120,70,180,0.4);
+}
+
+/* SCENE */
+
+.card-scene {
+  perspective: 1200px;
+  width: 100%;
+  max-width: 900px;
+}
+
+/* CARD */
 
 .id-card {
+  position: relative;
+  width: 100%;
+  min-height: 480px;
+  transform-style: preserve-3d;
+  transition: transform 0.9s cubic-bezier(.17,.89,.32,1.49);
+  cursor: pointer;
+}
+
+.id-card.flipped {
+  transform: rotateY(180deg);
+}
+
+/* FACES */
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
   background: linear-gradient(135deg, #ffffff, #f0e9ff);
   border-radius: 30px;
   padding: 40px;
-  max-width: 900px;
-  width: 100%;
-
-  display: grid;
-  grid-template-columns: 280px 1fr;
+  box-shadow: 0 30px 60px rgba(120,70,180,0.25);
+  display: flex;
   gap: 40px;
+}
 
-  box-shadow: 0 30px 60px rgba(120, 70, 180, 0.25);
+/* FRONT */
+
+.card-front {
+  display: flex;
 }
 
 /* PHOTO */
 
 .photo-frame {
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
 .photo-bg {
-  width: 240px;
-  height: 300px;
+  width: 220px;
+  height: 280px;
   border-radius: 26px;
   background: linear-gradient(135deg, #d8c9ff, #b892ff);
   padding: 10px;
-
-  box-shadow: 0 20px 45px rgba(120, 70, 180, 0.35);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .photo-bg img {
@@ -117,42 +194,61 @@
 .name {
   font-size: 2rem;
   color: #5b2d91;
-  margin-bottom: 4px;
 }
 
 .role {
   color: #7b4ac7;
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .details {
   list-style: none;
   padding: 0;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 .details li {
   color: #4b2b6a;
-  margin-bottom: 6px;
   font-size: 0.95rem;
+  margin-bottom: 6px;
 }
 
-.bio {
+.hint {
+  margin-top: auto;
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+/* BACK */
+
+.card-back {
+  transform: rotateY(180deg);
+  flex-direction: column;
+}
+
+.back-title {
+  font-size: 1.6rem;
+  color: #5b2d91;
+  margin-bottom: 20px;
+}
+
+.back-text {
   color: #4b2b6a;
   line-height: 1.7;
-  margin-bottom: 25px;
+  margin-bottom: 14px;
 }
 
-/* TAGS */
+/* TOOLS */
 
-.tags {
+.tools {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  margin-top: 20px;
 }
 
-.tags span {
+.tools span {
   background: #e7dcfb;
   color: #5b2d91;
   padding: 8px 14px;
@@ -163,26 +259,18 @@
 
 /* MOBILE */
 
-@media (max-width: 900px) {
-  .about {
-    padding: 100px 30px;
-  }
-
-  .title {
-    font-size: 2rem;
-  }
-
-  .id-card {
-    grid-template-columns: 1fr;
+@media (max-width: 800px) {
+  .card-face {
+    flex-direction: column;
     text-align: center;
   }
 
   .photo-bg {
-    width: 200px;
-    height: 260px;
+    width: 180px;
+    height: 220px;
   }
 
-  .tags {
+  .tools {
     justify-content: center;
   }
 }
