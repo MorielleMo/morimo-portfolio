@@ -83,8 +83,6 @@ function prev() {
 </script>
 
 <style scoped>
-/* ===== SECTION ===== */
-
 .brand {
   min-height: 100vh;
   background: #E6D9F6;
@@ -102,11 +100,10 @@ function prev() {
   color: #6b4a8f;
 }
 
-/* ===== PHONE ===== */
+/* 📱 PHONE */
 
 .phone {
   width: 320px;
-  max-width: 100%;
   margin: auto;
   background: #9b7fdc;
   border-radius: 40px;
@@ -116,7 +113,7 @@ function prev() {
     0 0 40px rgba(184,146,255,0.6);
 }
 
-/* ===== SCREEN ===== */
+/* 🖼️ SCREEN */
 
 .screen {
   background: #F3EDE5;
@@ -127,20 +124,17 @@ function prev() {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  overflow-y: auto;
 }
 
-/* ===== TRACK ===== */
+/* TRACK */
 
 .track {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  animation: fade 0.35s ease;
+  animation: fade 0.4s ease;
   width: 100%;
-  text-align: center;
 }
 
 @keyframes fade {
@@ -151,8 +145,6 @@ function prev() {
 .logo {
   width: 110px;
 }
-
-/* ===== COLORS ===== */
 
 .colors {
   display: grid;
@@ -167,7 +159,7 @@ function prev() {
   border: 1.5px solid #000;
 }
 
-/* ===== TYPO ===== */
+/* TYPO */
 
 .season {
   font-size: 1.6rem;
@@ -178,7 +170,7 @@ function prev() {
   color: #3a2a22;
 }
 
-/* ===== COMPONENTS ===== */
+/* COMPONENTS */
 
 .btn {
   border-radius: 999px;
@@ -203,17 +195,17 @@ function prev() {
   text-decoration: none;
 }
 
-/* ===== MOODBOARD ===== */
+/* MOODBOARD */
 
 .mood-img {
   width: 100%;
-  max-height: 260px;
+  height: auto;
   border-radius: 16px;
   object-fit: cover;
   box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 }
 
-/* ===== PLAYER ===== */
+/* PLAYER */
 
 .player {
   display: flex;
@@ -238,41 +230,5 @@ function prev() {
   margin-top: 8px;
   font-size: 0.8rem;
   color: #f4eefe;
-}
-
-/* ===== MOBILE ===== */
-
-@media (max-width: 768px) {
-
-  .brand {
-    padding: 100px 20px;
-  }
-
-  .title {
-    font-size: 2rem;
-  }
-
-  .phone {
-    width: 100%;
-    max-width: 340px;
-  }
-
-  .screen {
-    min-height: 300px;
-    max-height: 60vh;
-  }
-
-  .logo {
-    width: 90px;
-  }
-
-  .season {
-    font-size: 1.3rem;
-  }
-
-  .colors span {
-    width: 36px;
-    height: 36px;
-  }
 }
 </style>

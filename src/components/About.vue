@@ -148,7 +148,7 @@ const isFlipped = ref(false)
 .id-card {
   position: relative;
   width: 100%;
-  min-height: 520px;
+  height: 520px;
   transform-style: preserve-3d;
   transition: transform 0.9s cubic-bezier(.17,.89,.32,1.49);
   cursor: pointer;
@@ -279,34 +279,33 @@ const isFlipped = ref(false)
   margin-bottom: 14px;
 }
 
-/* ===== MOBILE FIX ===== */
+/* ===== MOBILE FIX (ANTI-DESCENTE) ===== */
 
 @media (max-width: 800px) {
 
+  .card-scene {
+    height: 80vh;
+  }
+
   .id-card {
-    min-height: auto;
+    height: 100%;
   }
 
   .card-face {
-    position: relative;
-    max-height: 75vh;
-    overflow-y: auto;
-    padding-bottom: 30px;
+    padding: 30px 20px 40px;
     flex-direction: column;
     text-align: center;
+    overflow-y: auto;
   }
 
   .photo-bg {
     width: 180px;
     height: 220px;
+    margin: 0 auto;
   }
 
   .tags {
     justify-content: center;
-  }
-
-  .card-back {
-    padding-bottom: 40px;
   }
 }
 </style>
